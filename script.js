@@ -26,8 +26,8 @@ function showTodo(filter) {
                             <div class="settings">
                                 <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
                                 <ul class="task-menu">
-                                    <li onclick='editTask(${id}, "${todo.name}")'><i class="uil uil-pen"></i>Edit</li>
-                                    <li onclick='deleteTask(${id}, "${filter}")'><i class="uil uil-trash"></i>Delete</li>
+                                    <li onclick='editTask(${id}, "${todo.name}")'><i class="uil uil-pen"></i></li>
+                                    <li onclick='deleteTask(${id}, "${filter}")'><i class="uil uil-trash"></i></li>
                                 </ul>
                             </div>
                         </li>`;

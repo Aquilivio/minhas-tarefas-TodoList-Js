@@ -12,7 +12,11 @@ body {
   overflow: hidden;
   background: linear-gradient(to right, #7400b8, #5390d9);
 }
-
+footer {
+  color: rgb(0, 38, 255);
+  text-align: center;
+  margin: 27px;
+}
 .wrapper {
   max-width: 700px;
   padding: 68px 0 70px;
@@ -233,12 +237,19 @@ li {
 }
 
 .task-menu li {
-  height: 25px;
+  display: flex; /* Garante que os itens fiquem lado a lado */
+  align-items: center; /* Alinha verticalmente os itens */
+  height: 40px; /* Ajuste de altura para melhor aparência */
   font-size: 16px;
-  padding: 17px 15px;
+  padding: 10px 15px;
   margin-bottom: 2px;
   cursor: pointer;
-  justify-content: flex-start;
+  justify-content: flex-start; /* Alinha o ícone e o texto à esquerda */
+  gap: 8px; /* Espaçamento entre o ícone e o texto */
+}
+
+.task-menu li i {
+  font-size: 18px; /* Ajusta o tamanho do ícone */
 }
 
 .task-menu li:last-child {
@@ -289,7 +300,7 @@ li {
   }
   .task-box {
     margin-top: 20px;
-    margin-right: 5px;
+    margin-right: 15px;
     padding: 0 15px 10px 20px;
   }
   .task label input {
