@@ -17,3 +17,9 @@ O **Minhas Tarefas App** é um simples aplicativo de lista de tarefas, onde voc�
 - 🎨 **CSS**: Para o estilo da página.
 - ⚡ **JavaScript**: Para adicionar interatividade, como adicionar, editar, excluir tarefas e alternar entre os temas.
 - 💾 **LocalStorage**: Para armazenar as tarefas no navegador e garantir que suas tarefas sejam mantidas após o fechamento da página.
+
+Modo Light
+![alt text](<Captura de ecrã de 2025-02-03 15-21-08-1.png>)
+
+Modo Dark
+![alt text](<Captura de ecrã de 2025-02-03 15-22-27.png>)
