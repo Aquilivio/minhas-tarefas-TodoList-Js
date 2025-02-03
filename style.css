@@ -1,65 +1,135 @@
+/* Importação da fonte Poppins do Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* Definição de variáveis para cores no modo claro e escuro */
+:root {
+  --background-light: #ffffff;
+  --background-dark: #000000;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --task-background-light: #f9f9f9;
+  --task-background-dark: #222222;
+  --task-border-light: #ccc;
+  --task-border-dark: #444;
+}
+
+/* Reset global para remover margens e paddings padrões */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif; /* Aplicação da fonte global */
 }
 
+/* Estilização do corpo da página */
 body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: linear-gradient(to right, #7400b8, #5390d9);
+  height: 100vh;
+  overflow: hidden; /* Impede rolagem */
+  background-color: var(--background-light);
+  color: var(--text-light);
+  transition: background 0.3s, color 0.3s; /* Suaviza a transição entre temas */
 }
+
+/* Estilos para o modo escuro */
+body.dark-mode {
+  background-color: var(--background-dark);
+  color: var(--text-dark);
+}
+
+/* Estilização do rodapé */
 footer {
   color: rgb(0, 38, 255);
   text-align: center;
   margin: 27px;
 }
+
+/* Container principal */
 .wrapper {
   max-width: 700px;
-  padding: 68px 0 70px;
+  padding: 50px 20px;
   margin: 37px auto;
-  background-color: #fff;
+  background-color: var(--background-light);
   border-radius: 5px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s;
 }
 
+/* Estilo da "wrapper" no modo escuro */
+body.dark-mode .wrapper {
+  background-color: var(--task-background-dark);
+}
+
+/* Estilização do cabeçalho */
 .wrapper header {
   font-size: 30px;
   font-weight: 600;
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   background-image: linear-gradient(to bottom, #7209b7, #48cae4);
   color: black;
   background-clip: text;
   -webkit-background-clip: text;
-  /* Adicionado: */
   -webkit-text-fill-color: transparent;
 }
-/* Garante que cada tarefa não ultrapasse a largura do contêiner */
+
+/* Estilização das tarefas */
 .task {
   width: 100%;
-  background: #f9f9f9;
+  background: var(--task-background-light);
   padding: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   word-break: break-word;
+  border: 1px solid var(--task-border-light);
 }
+
+/* Estilo das tarefas no modo escuro */
+body.dark-mode .task {
+  background: var(--task-background-dark);
+  border: 1px solid var(--task-border-dark);
+}
+
+/* Layout das etiquetas das tarefas */
+.task label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Transição para o texto das tarefas */
+.task label p {
+  transition: opacity 0.3s;
+}
+
+/* Quando a tarefa está concluída */
+.task label p.checked {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* Adição de emojis para status da tarefa */
+.task label p.checked::before {
+  content: "✅ "; /* Tarefa concluída */
+}
+
+.task label p:not(.checked)::before {
+  content: "⏳ "; /* Tarefa pendente */
+}
+
+/* Estilo do checkbox da tarefa */
+.task label input {
+  margin-top: 6px;
+  margin-right: 12px;
+}
+
+/* Campo de entrada para nova tarefa */
 .task-input {
   height: 52px;
   padding: 0 25px;
   position: relative;
-}
-
-.task-input figure {
-  position: absolute;
-  top: 50%;
-  transform: translate(17px, -50%);
-  opacity: 0.3;
 }
 
 .task-input input {
@@ -68,73 +138,53 @@ footer {
   outline: none;
   font-size: 16px;
   border-radius: 5px;
-  border: 1px solid #999;
-  padding: 0 20px 0 53px;
+  border: 1px solid var(--task-border-light); /* Borda clara por padrão */
+  padding: 0 20px;
+  color: var(--text-light); /* Texto preto no modo claro */
+  background-color: var(--task-background-light); /* Fundo claro */
+  transition: border 0.3s, color 0.3s, background-color 0.3s;
 }
 
-.task-input input:focus,
-.task-input input.active {
-  padding-left: 52px;
-  border: 2px solid #5e60ce;
+body.dark-mode .task-input input {
+  border: 1px solid var(--task-border-dark); /* Borda escura no modo escuro */
+  color: var(--text-dark); /* Texto branco no modo escuro */
+  background-color: var(--task-background-dark); /* Fundo escuro */
 }
 
-.task-input input::placeholder {
-  color: #bfbfbf;
+.task-input input:focus {
+  border: 2px solid #5e60ce; /* Cor da borda ao focar */
 }
 
-.controls,
-li {
+/* Estilização dos filtros de tarefas */
+.filters {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.controls {
-  padding: 18px 25px;
-  border-bottom: 1px solid #ccc;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 .filters span {
   cursor: pointer;
-  color: #444444;
-  margin: 0 8px;
+  color: #444;
   font-size: 17px;
-}
-
-.filters span.active {
-  color: #003049;
-}
-
-.filters span:first-child {
-  margin-left: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s;
 }
 
 .filters span.active {
   background-image: linear-gradient(to bottom, #7209b7, #00b4d8);
-  color: black;
-  background-clip: text;
-  -webkit-background-clip: text;
-  /* Adicionado: */
-  -webkit-text-fill-color: transparent;
+  color: white;
 }
 
-.clear-btn:active {
-  outline: none;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 13px;
-  border-radius: 5px;
-  padding: 7px 13px;
-  background-color: linear-gradient(to right, #7400b8, #5390d9);
-  transform: translateY(2px);
+.filters span:hover {
+  background: #5e60ce;
+  color: white;
 }
 
-.clear-btn:hover {
-  background-image: linear-gradient(to right, #5e60ce, #5390d9);
-}
-
-.controls .clear-btn {
+/* Botão de limpeza de tarefas */
+.clear-btn {
   outline: none;
   border: none;
   color: #fff;
@@ -143,167 +193,94 @@ li {
   border-radius: 5px;
   padding: 7px 13px;
   background: linear-gradient(to right, #5e60ce, #5390d9);
+  transition: 0.3s;
 }
 
+.clear-btn:hover {
+  background: linear-gradient(to right, #3b48c0, #4169e1);
+}
+
+/* Caixa que contém as tarefas */
 .task-box {
-  max-height: 300px; /* Define a altura máxima da lista */
-  overflow-y: auto; /* Adiciona scroll quando necessário */
+  max-height: 300px;
+  overflow-y: auto;
   margin-top: 20px;
-  margin-right: 5px;
-  padding: 10px 25px 10px 25px;
-  border: 1px solid #ccc; /* Opcional: Adiciona uma borda para destacar */
+  padding: 10px;
   border-radius: 5px;
+  border: 1px solid var(--task-border-light);
 }
 
-/* Estiliza a barra de rolagem para ficar mais discreta */
-.task-box::-webkit-scrollbar {
-  width: 8px;
-}
-.task-box::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
+/* Caixa das tarefas no modo escuro */
+body.dark-mode .task-box {
+  border: 1px solid var(--task-border-dark);
 }
 
-.task-box::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-.task-box::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
+/* Estilização do botão de alternância do modo escuro */
 
-.task-box::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-.task-box .task {
-  list-style: none;
-  font-size: 17px;
-  margin-bottom: 18px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #ccc;
-}
-
-.task-box .task:last-child {
-  margin-bottom: 0;
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-.task label {
-  display: flex;
-}
-
-.task label p.checked {
-  opacity: 0.5;
-  text-decoration: line-through;
-}
-
-.task label input {
-  margin-top: 6px;
-  margin-right: 12px;
-}
-
-.task .settings {
-  cursor: pointer;
-  position: relative;
-}
-
-.settings .task-menu {
-  position: absolute;
-  padding: 5px 0;
-  right: -5px;
-  bottom: -65px;
-  z-index: 10;
-  transform: scale(0);
-  border-radius: 5px;
-  background: #fff;
-  transform-origin: top right;
-  transition: transform 0.2s ease;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
-}
-
-.task-box .task:last-child .task-menu {
-  bottom: 0;
-  transform-origin: bottom right;
-}
-
-.task-box .task:first-child .task-menu {
-  bottom: -65px;
-  transform-origin: top right;
-}
-
-.settings:hover .task-menu.show {
-  transform: scale(1);
-}
-
-.task-menu li {
-  display: flex; /* Garante que os itens fiquem lado a lado */
-  align-items: center; /* Alinha verticalmente os itens */
-  height: 40px; /* Ajuste de altura para melhor aparência */
-  font-size: 16px;
+#toggle-theme {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background: var(--button-bg);
+  color: var(--text-light); /* Texto preto no modo claro */
+  border: none;
   padding: 10px 15px;
-  margin-bottom: 2px;
+  border-radius: 5px;
   cursor: pointer;
-  justify-content: flex-start; /* Alinha o ícone e o texto à esquerda */
-  gap: 8px; /* Espaçamento entre o ícone e o texto */
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s;
 }
 
-.task-menu li i {
-  font-size: 18px; /* Ajusta o tamanho do ícone */
+body.dark-mode #toggle-theme {
+  color: var(--text-dark); /* Texto branco no modo escuro */
+}
+#toggle-theme:hover {
+  background: #5e60ce;
 }
 
-.task-menu li:last-child {
-  margin-bottom: 0;
-}
-
-.task-menu li:hover {
-  background-image: linear-gradient(to bottom, #5390d9, #5390d9);
-}
-
-.task-menu li:active {
-  color: #fff;
-  background-color: #5e60ce;
-}
-
-.task-menu li:hover {
-  color: #fff;
-}
-
-.task-menu li i {
-  padding-right: 8px;
-}
-
-.task-input input {
-  transition: border 0.3s ease, padding 0.3s ease;
-}
-
-.settings :where(i, li) {
-  cursor: pointer;
-}
-
-/*responsive*/
-@media (max-width: 400px) {
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
   body {
     padding: 0 10px;
   }
   .wrapper {
-    padding: 20px 0;
+    max-width: 90%;
   }
-  .filters span {
-    margin: 0 5px;
+  .filters {
+    flex-wrap: wrap;
+    gap: 10px;
   }
-  .task-input {
-    padding: 0 20px;
+}
+
+/* MENSAGEM DE FEEDBACK */
+.feedback-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #323232;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none; /* Inicialmente oculto */
+  font-size: 16px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.feedback-message.show {
+  display: block;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
   }
-  .controls {
-    padding: 18px 20px;
+  80% {
+    opacity: 1;
   }
-  .task-box {
-    margin-top: 20px;
-    margin-right: 15px;
-    padding: 0 15px 10px 20px;
-  }
-  .task label input {
-    margin-top: 4px;
+  100% {
+    opacity: 0;
   }
 }

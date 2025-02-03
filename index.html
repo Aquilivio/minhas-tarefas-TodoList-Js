@@ -1,40 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
   <head>
+    <!-- Definindo o charset como UTF-8, garantindo compatibilidade com caracteres especiais -->
     <meta charset="UTF-8" />
+    <!-- Definindo a compatibilidade com navegadores antigos -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tornando o site responsivo, ajustando o conteúdo para diferentes larguras de tela -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link para o arquivo CSS externo que estiliza a página -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Link para a biblioteca de ícones Unicons -->
     <link
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
+
+    <!-- Link para a biblioteca Font Awesome para ícones adicionais -->
     <script
       src="https://kit.fontawesome.com/c0e515670e.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- Título da página que aparecerá na aba do navegador -->
     <title>Minhas Tarefas App</title>
   </head>
 
   <body>
+    <!-- Wrapper (contenedor principal) que engloba todo o conteúdo da página -->
     <div class="wrapper">
+      <!-- Cabeçalho que contém o título principal do aplicativo -->
       <header>Minhas Tarefas</header>
+
+      <!-- Campo de entrada para nova tarefa -->
       <div class="task-input">
+        <!-- Ícone de barras que pode ser utilizado como um menu ou algo similar -->
         <figure><i class="fa-solid fa-bars"></i></figure>
+
+        <!-- Campo de texto onde o usuário pode digitar a nova tarefa -->
         <input type="text" placeholder="Adicione uma nova tarefa" />
       </div>
+
+      <!-- Controles para interações do usuário -->
       <div class="controls">
         <div class="filters">
-          <span id="all" class="active">TODOS</span>
+          <!-- Filtros para mostrar diferentes tipos de tarefas -->
+          <span id="all" class="active">Todas</span>
           <span id="pending">Pendente</span>
-          <span id="completed">Concluído</span>
+          <span id="completed">Concluída</span>
+
+          <!-- Botão para alternar entre modo claro e escuro -->
+          <button id="toggle-theme">🌙 Modo Dark</button>
         </div>
+
+        <!-- Botão para limpar todas as tarefas -->
         <button class="clear-btn">Limpar Tudo</button>
       </div>
+
+      <!-- Lista de tarefas, onde as tarefas serão exibidas -->
       <ul class="task-box"></ul>
+
+      <!-- Feedback de Sucesso/Erro -->
+      <div id="feedback-message" class="feedback-message"></div>
+
+      <!-- Rodapé com informações de copyright -->
       <footer><p>&copy; copyright aquiliviomaria@gmail.com</p></footer>
     </div>
 
+    <!-- Link para o script JavaScript que adiciona funcionalidades à página -->
     <script src="script.js"></script>
   </body>
 </html>
