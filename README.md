@@ -19,7 +19,7 @@ O **Minhas Tarefas App** é um simples aplicativo de lista de tarefas, onde voc�
 - 💾 **LocalStorage**: Para armazenar as tarefas no navegador e garantir que suas tarefas sejam mantidas após o fechamento da página.
 
 Modo Light
-![alt text](<Captura de ecrã de 2025-02-03 15-21-08-1.png>)
+![alt text](<Captura de ecrã de 2025-02-03 15-21-08.png>)
 
 Modo Dark
 ![alt text](<Captura de ecrã de 2025-02-03 15-22-27.png>)
